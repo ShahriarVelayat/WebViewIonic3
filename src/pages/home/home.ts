@@ -1,14 +1,36 @@
-import { Component } from '@angular/core';
+import { Component , OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
+import { Platform } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [InAppBrowser]
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private iab: InAppBrowser,
+    private platform: Platform) {
 
+  }
+
+  ionViewWillLoad() {
+    var url = 'http://hamrahapp.info/ads'
+    const options: InAppBrowserOptions = {
+      zoom: 'no',
+      toolbar: 'no',
+      location: 'no'
+    }
+    const browser = this.iab.create(url, '_self', options);
+
+    browser.show();
+  }
+  ngOnInit(){
+
+}
+ closeApp(){
+    this.platform.exitApp();
   }
 
 }
