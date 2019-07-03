@@ -16,15 +16,14 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillLoad() {
-    var url = 'http://hamrahapp.info/ads'
+    var url = 'http://www.rivasgallery.ir/';
     const options: InAppBrowserOptions = {
       zoom: 'no',
       toolbar: 'no',
       location: 'no'
-    }
-    const browser = this.iab.create(url, '_self', options);
+    };
+    const browser = this.iab.create(url,'_self', options);
 
-    browser.show();
   }
   ngOnInit(){
 
